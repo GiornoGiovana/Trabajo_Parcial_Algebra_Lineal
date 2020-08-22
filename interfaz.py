@@ -4,7 +4,7 @@ El programa debemostrar gráficamente la curva que se aproxime mejor linealmente
 El usuario debe seleccionar el tipo de curva: polinomial(de grado 𝑚≤6), exponencial o potencial.
 '''
 from tkinter import *
-from tkinter import ttk
+
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -53,15 +53,19 @@ def pares(arreglo):
 def exit():
     return root.destroy()
 
+# Cuando Solo tenemos el valor de una variable, la mejor estimación que se puede lograr es sacar el prmedio.
+
 
 def generarpares():
+    n = 1
     p = pares(generar_arreglo())
     X = []
     Y = []
     # print(p)
     for i in p:
-        X.append(i[0])
+        X.append(n)
         Y.append(i[1])
+        n += 1
 
     #print(X, Y)
     plt.plot(X, Y, 'ro')
@@ -89,11 +93,11 @@ numeroPares.grid(row=0, column=1, padx=5, pady=5)
 
 
 # Boton para generar los pares ordenados
-Button(UI_frame, text="Generar Pares", command=generarpares,
-       bg='green').grid(row=0, column=4, padx=10, pady=10)
+generar_button = Button(UI_frame, text="Generar Pares", command=generarpares,
+                        bg='green').grid(row=0, column=4, padx=10, pady=10)
 
 # Boton para salir del programa
-Button(UI_frame, text="Salir", command=exit, bg='red').grid(
+salir_button = Button(UI_frame, text="Salir", command=exit, bg='red').grid(
     row=0, column=5, padx=10, pady=10)
 
 root.mainloop()
