@@ -18,8 +18,8 @@ import random
 def generar_arreglo():
     a = []
     # devuelve el valor de la escala
-    for i in range(10):
-        rand = random.randint(0, 15)
+    for i in range(50):
+        rand = random.randint(0, 25)
         a.append(rand)
     return a
 
@@ -31,6 +31,7 @@ def pares(arreglo):
     #"""Return an iterator of random pairs from a list of numbers."""
     # Keep track of already generated pairs
     used_pairs = set()
+    used_axis_X = []
     n = numeroPares.get()
     count = 0
     # print(pair)
@@ -38,13 +39,14 @@ def pares(arreglo):
     while True:
         pair = random.sample(arreglo, 2)
         pair = tuple(sorted(pair))
-        if pair not in used_pairs:
+        if pair not in used_pairs and pair[0] not in used_axis_X:
+            used_axis_X.append(pair[0])
             used_pairs.add(pair)
             count += 1
-            # yield pair
+
             if count == n:
                 break
-
+    print(used_axis_X)
     return used_pairs
 
 
@@ -56,12 +58,12 @@ def generarpares():
     p = pares(generar_arreglo())
     X = []
     Y = []
-    print(p)
+    # print(p)
     for i in p:
         X.append(i[0])
         Y.append(i[1])
 
-    print(X, Y)
+    #print(X, Y)
     plt.plot(X, Y, 'ro')
     plt.ylabel('Regresion Lineal')
     plt.show()
