@@ -76,7 +76,7 @@ def show_plot():
 root = Tk()
 root.title('Regresión Lineal')
 root.maxsize(1100, 800)
-root.geometry('500x100')
+root.geometry('600x100')
 root.config(bg='white')
 
 
@@ -88,16 +88,16 @@ UI_frame = Frame(root, width=800, height=400, bg='white')
 UI_frame.grid(row=0, column=0, padx=5, pady=5)
 
 # Escala para los numeros de pares ordenados que vamos a tener
-numeroPares = Scale(UI_frame, from_=8, to=12, length=200, digits=1,
-                    resolution=1, orient=HORIZONTAL, label="Numero de Pares")
+numeroPares = Scale(UI_frame, from_=8, to=12, length=200, digits=1, resolution=1, orient=HORIZONTAL, label="Numero de Pares")
 numeroPares.grid(row=0, column=1, padx=5, pady=5)
 
 # Boton para generar los pares ordenados
-Button(UI_frame, text="Regresión Lineal", command=show_plot,
-       bg='green').grid(row=0, column=4, padx=10, pady=10)
+Button(UI_frame, text="Generar Pares", command=show_plot, bg='light green').grid(row=0, column=4, padx=10, pady=10)
+
+# Boton para generar la regresión lineal
+Button(UI_frame, text="Regresión Lineal", command='', bg='light blue').grid(row=0, column=5, padx=10, pady=10)
 
 # Boton para salir del programa
-Button(UI_frame, text="Salir", command=exit, bg='red').grid(
-    row=0, column=5, padx=10, pady=10)
+Button(UI_frame, text="Salir", command=exit, bg='red').grid(row=0, column=6, padx=10, pady=10)
 
 root.mainloop()
