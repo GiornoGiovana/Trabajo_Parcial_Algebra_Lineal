@@ -11,6 +11,7 @@ import random
 
 X = None
 Y = None
+n_g = None
 
 
 def generar_arreglo():
@@ -49,26 +50,7 @@ def exit():
 # Cuando Solo tenemos el valor de una variable, la mejor estimación que se puede lograr es sacar el prmedio.
 
 
-def generarpares():
-    n = 1
-    p = pares(generar_arreglo())
-    X = []
-    Y = []
-    # print(p)
-    for i in p:
-        X.append(n)
-        Y.append(i[1])
-        n += 1
-
-    #print(X, Y)
-    plt.plot(X, Y, 'ro')
-    plt.ylabel('Regresion Lineal')
-    plt.show()
-
-    #print("generar pares")
-
-
-def pares(arreglo):
+def pares(arreglo, n):
     used_pairs = set()
     used_axis_X = []
     n = numeroPares.get()
@@ -87,9 +69,12 @@ def pares(arreglo):
 
 
 def generarpares():
+    global n_g
+    n = numeroPares.get()
     global X, Y
-    if not X and not Y:
-        p = pares(generar_arreglo())
+    if (not X and not Y) or n != n_g:
+        n_g = n
+        p = pares(generar_arreglo(), n_g)
         X = []
         Y = []
         # print(p)
