@@ -21,6 +21,52 @@ def generar_arreglo():
     return a
 # ejemplo de arreglo: [3, 9, 12, 14, 5, 13, 8, 1]
 
+    #"""Return an iterator of random pairs from a list of numbers."""
+    # Keep track of already generated pairs
+    used_pairs = set()
+    used_axis_X = []
+    n = numeroPares.get()
+    count = 0
+    # print(pair)
+    # Avoid generating both (1, 2) and (2, 1)
+    while True:
+        pair = random.sample(arreglo, 2)
+        pair = tuple(sorted(pair))
+        if pair not in used_pairs and pair[0] not in used_axis_X:
+            used_axis_X.append(pair[0])
+            used_pairs.add(pair)
+            count += 1
+
+            if count == n:
+                break
+    print(used_axis_X)
+    return used_pairs
+
+
+def exit():
+    return root.destroy()
+
+# Cuando Solo tenemos el valor de una variable, la mejor estimación que se puede lograr es sacar el prmedio.
+
+
+def generarpares():
+    n = 1
+    p = pares(generar_arreglo())
+    X = []
+    Y = []
+    # print(p)
+    for i in p:
+        X.append(n)
+        Y.append(i[1])
+        n += 1
+
+    #print(X, Y)
+    plt.plot(X, Y, 'ro')
+    plt.ylabel('Regresion Lineal')
+    plt.show()
+
+    #print("generar pares")
+
 
 def pares(arreglo):
     used_pairs = set()
