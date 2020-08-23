@@ -9,9 +9,10 @@ import matplotlib
 import matplotlib.pyplot as plt
 import random
 
+# Inicializamos los globales
 X = None
 Y = None
-n_g = None
+N = None
 
 
 def generar_arreglo():
@@ -20,34 +21,6 @@ def generar_arreglo():
         rand = random.randint(0, 25)
         a.append(rand)
     return a
-# ejemplo de arreglo: [3, 9, 12, 14, 5, 13, 8, 1]
-
-    #"""Return an iterator of random pairs from a list of numbers."""
-    # Keep track of already generated pairs
-    used_pairs = set()
-    used_axis_X = []
-    n = numeroPares.get()
-    count = 0
-    # print(pair)
-    # Avoid generating both (1, 2) and (2, 1)
-    while True:
-        pair = random.sample(arreglo, 2)
-        pair = tuple(sorted(pair))
-        if pair not in used_pairs and pair[0] not in used_axis_X:
-            used_axis_X.append(pair[0])
-            used_pairs.add(pair)
-            count += 1
-
-            if count == n:
-                break
-    print(used_axis_X)
-    return used_pairs
-
-
-def exit():
-    return root.destroy()
-
-# Cuando Solo tenemos el valor de una variable, la mejor estimación que se puede lograr es sacar el prmedio.
 
 
 def pares(arreglo, n):
@@ -69,12 +42,13 @@ def pares(arreglo, n):
 
 
 def generarpares():
-    global n_g
-    n = numeroPares.get()
     global X, Y
-    if (not X and not Y) or n != n_g:
-        n_g = n
-        p = pares(generar_arreglo(), n_g)
+    global N
+
+    n = numeroPares.get()
+    if (not X and not Y) or n != N:
+        N = n
+        p = pares(generar_arreglo(), N)
         X = []
         Y = []
         # print(p)
