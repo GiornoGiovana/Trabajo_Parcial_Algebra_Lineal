@@ -23,7 +23,7 @@ def generar_arreglo():
     return a
 
 
-def pares(arreglo, n):
+def generar_pares(arreglo, n):
     used_pairs = set()
     used_axis_X = []
     n = numeroPares.get()
@@ -41,14 +41,16 @@ def pares(arreglo, n):
     return used_pairs
 
 
-def generarpares():
+def show_plot():
     global X, Y
     global N
 
     n = numeroPares.get()
+
+    # Checkea si X y Y existen o si se pide otra cantidad de pares en el slider
     if (not X and not Y) or n != N:
         N = n
-        p = pares(generar_arreglo(), N)
+        p = generar_pares(generar_arreglo(), N)
         X = []
         Y = []
         # print(p)
@@ -91,7 +93,7 @@ numeroPares = Scale(UI_frame, from_=8, to=12, length=200, digits=1,
 numeroPares.grid(row=0, column=1, padx=5, pady=5)
 
 # Boton para generar los pares ordenados
-Button(UI_frame, text="Regresión Lineal", command=generarpares,
+Button(UI_frame, text="Regresión Lineal", command=show_plot,
        bg='green').grid(row=0, column=4, padx=10, pady=10)
 
 # Boton para salir del programa
