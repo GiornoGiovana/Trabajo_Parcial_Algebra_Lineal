@@ -75,7 +75,7 @@ def show_plot():
 # --------- INTERFAZ DEL PROGRAMA -----------
 root = Tk()
 root.title('Regresión Lineal')
-root.maxsize(1100, 800)
+root.maxsize(600, 100)
 root.geometry('600x100')
 root.config(bg='white')
 
