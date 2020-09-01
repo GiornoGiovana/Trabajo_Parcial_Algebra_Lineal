@@ -8,6 +8,7 @@ from tkinter import ttk
 import matplotlib
 import matplotlib.pyplot as plt
 import random
+import numpy as np
 
 # Inicializamos los globales
 X = None
@@ -61,7 +62,12 @@ def show_plot():
     plt.plot(X, Y, 'ro')
     plt.title('Regresion Lineal')
     plt.show()
-
+    
+#Por si no tienen la funcion todavia xd    
+def regresion_lineal(A, B):
+    x = np.dot(np.transpose(A), A)
+    y = np.dot(np.transpose(A), B)
+    return np.dot(np.linalg.inv(x), y)
 
 # def regresion_lineal(x, y):
 #     slope, intercept, r, p, std_err = stats.linregress(x, y)
